@@ -1,5 +1,6 @@
 package com.example.electric_bill_management;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -52,7 +53,12 @@ public class Login extends AppCompatActivity {
                 }
 
                 if(name.equals("user") && pass.equals("user")){
-                    Toast.makeText(Login.this,"Login Successfully",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Login.this, MainMenu.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(Login.this, "Wrong Login Info",Toast.LENGTH_SHORT).show();
+                    username.setText("");
+                    password.setText("");
                 }
 
             }
