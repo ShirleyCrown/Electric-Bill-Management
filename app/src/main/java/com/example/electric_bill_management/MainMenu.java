@@ -29,10 +29,26 @@ public class MainMenu extends AppCompatActivity {
         updatePriceButton = findViewById(R.id.updatePriceButton);
         searchCustomerButton = findViewById(R.id.searchCustomerButton);
 
+        addCustomerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, AddCustomer.class);
+                startActivity(intent);
+            }
+        });
         searchCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, SearchCustomer.class);
+                startActivity(intent);
+            }
+        });
+
+
+        updatePriceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, IncreaseElectricPrice.class);
                 startActivity(intent);
             }
         });

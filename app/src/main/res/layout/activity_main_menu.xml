@@ -12,16 +12,11 @@
         android:id="@+id/cardView3"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginStart="4dp"
         android:backgroundTint="#FFA592"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toEndOf="@+id/cardView4"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.169">
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <Button
             android:id="@+id/searchCustomerButton"
@@ -58,13 +53,10 @@
         android:layout_width="195dp"
         android:layout_height="195dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="52dp"
         android:backgroundTint="#FFCF73"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.198">
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <Button
             android:id="@+id/updatePriceButton"
@@ -142,12 +134,10 @@
         android:id="@+id/cardView2"
         android:layout_width="195dp"
         android:layout_height="195dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="264dp"
-        android:layout_marginEnd="4dp"
         android:backgroundTint="#8DCE9B"
         app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="parent">
 
