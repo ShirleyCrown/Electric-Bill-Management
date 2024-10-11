@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainMenu extends AppCompatActivity {
     private Button addCustomerButton, listButton, updatePriceButton, searchCustomerButton;
+    private DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,9 @@ public class MainMenu extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        databaseHelper = new DatabaseHelper(this);
+        databaseHelper.createDatabase();
 
         addCustomerButton = findViewById(R.id.addCustomerButton);
         listButton = findViewById(R.id.listCustomerButton);
