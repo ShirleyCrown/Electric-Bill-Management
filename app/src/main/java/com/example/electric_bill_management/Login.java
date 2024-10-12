@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.search);
         password = findViewById(R.id.password);
         signInButton = findViewById(R.id.signInButton);
 

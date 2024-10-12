@@ -3,13 +3,16 @@ package com.example.electric_bill_management;
 public class Customer {
     private int id;
     private String name;
-    private String yyyymm;
+    private int yyyymm;
     private String address;
-    private int usedNumElectric;
+    private double usedNumElectric;
     private int elecUserTypeId;
 
+    public Customer() {
+    }
+
     // Constructor
-    public Customer(int id, String name, String yyyymm, String address, int usedNumElectric, int elecUserTypeId) {
+    public Customer(int id, String name, int yyyymm, String address, int usedNumElectric, int elecUserTypeId) {
         this.id = id;
         this.name = name;
         this.yyyymm = yyyymm;
@@ -35,11 +38,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getYyyymm() {
+    public int getYyyymm() {
         return yyyymm;
     }
 
-    public void setYyyymm(String yyyymm) {
+    public void setYyyymm(int yyyymm) {
         this.yyyymm = yyyymm;
     }
 
@@ -51,11 +54,11 @@ public class Customer {
         this.address = address;
     }
 
-    public int getUsedNumElectric() {
+    public double getUsedNumElectric() {
         return usedNumElectric;
     }
 
-    public void setUsedNumElectric(int usedNumElectric) {
+    public void setUsedNumElectric(double usedNumElectric) {
         this.usedNumElectric = usedNumElectric;
     }
 
