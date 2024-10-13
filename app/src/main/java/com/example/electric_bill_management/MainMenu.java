@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.electric_bill_management.Customer_RecyclerView.CustomerList;
+
 public class MainMenu extends AppCompatActivity {
     private Button addCustomerButton, listButton, updatePriceButton, searchCustomerButton;
     private DatabaseHelper databaseHelper;
@@ -54,6 +56,14 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, IncreaseElectricPrice.class);
+                startActivity(intent);
+            }
+        });
+
+        listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, CustomerList.class);
                 startActivity(intent);
             }
         });

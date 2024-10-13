@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/dm_serif_display</item>
+        <item>@font/poppins_thin</item>
         <item>@font/source_sans_pro_extralight</item>
     </array>
 </resources>

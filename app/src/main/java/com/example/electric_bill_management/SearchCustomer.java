@@ -97,7 +97,9 @@ public class SearchCustomer extends AppCompatActivity {
                     address.setText(customers.get(0).getAddress());
                     String res = customers.get(0).getUsedNumElectric()+"";
                     amount.setText(res);
-                    userType.setText(String.valueOf(customers.get(0).getElecUserTypeId()));
+
+                    String type = customers.get(0).getElecUserTypeId() == 1?"Private":"Business";
+                    userType.setText(type);
 
                     int unit_price = databaseHelper.getPriceByType(customers.get(0).getElecUserTypeId());
                     price.setText(String.valueOf(customers.get(0).getUsedNumElectric()*unit_price));

@@ -8,29 +8,32 @@
     android:layout_height="match_parent"
     tools:context=".Customer_RecyclerView.CustomerList">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/circle_button"
-            app:srcCompat="@drawable/ic_back" />
-    </FrameLayout>
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#FAF4E1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageBackButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_button"
+            app:srcCompat="@drawable/ic_back" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

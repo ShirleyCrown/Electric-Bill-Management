@@ -187,6 +187,35 @@ public class DatabaseHelper {
         db.close();
     }
 
+    public List<String> getAllCustomerNames() {
+        List<String> customerNames = new ArrayList<>();
+        SQLiteDatabase db = openDatabase();
+        Cursor cursor = db.rawQuery("SELECT NAME FROM CUSTOMER", null);
+        if (cursor.moveToFirst()) {
+            do {
+                customerNames.add(cursor.getString(0));  // Lấy tên của khách hàng từ cột đầu tiên
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return customerNames;
+    }
+
+    public List<String> getAllCustomerAddresses() {
+        List<String> customerAddresses = new ArrayList<>();
+        SQLiteDatabase db = openDatabase();
+        Cursor cursor = db.rawQuery("SELECT ADDRESS FROM CUSTOMER", null);
+        if (cursor.moveToFirst()) {
+            do {
+                customerAddresses.add(cursor.getString(0));  // Lấy địa chỉ của khách hàng từ cột đầu tiên
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return customerAddresses;
+    }
+
+
     public void increaseElectricUnitPrice(int userTypeId, int increaseAmount) {
         SQLiteDatabase db = openDatabase();
 
@@ -243,24 +272,4 @@ public class DatabaseHelper {
         notificationManager.notify(1, builder.build());
     }
 
-//    public List<String> getJoinedCustomerData() {
-//        List<String> joinedDataList = new ArrayList<>();
-//        SQLiteDatabase db = openDatabase();
-//        String query = "SELECT CUSTOMER.ID, CUSTOMER.NAME, CUSTOMER.YYYYMM, CUSTOMER.ADDRESS, " +
-//                "CUSTOMER.USED_NUM_ELECTRIC, ELECTRIC_USER_TYPE.ELEC_USER_TYPE_NAME, ELECTRIC_USER_TYPE.UNIT_PRICE " +
-//                "FROM CUSTOMER " +
-//                "JOIN ELECTRIC_USER_TYPE ON CUSTOMER.ELEC_USER_TYPE_ID = ELECTRIC_USER_TYPE.ID";
-//        Cursor cursor = db.rawQuery(query, null);
-//        if (cursor.moveToFirst()) {
-//            do {
-//                joinedDataList.add("Customer ID: " + cursor.getInt(0) + ", Name: " + cursor.getString(1) +
-//                        ", YYYYMM: " + cursor.getString(2) + ", Address: " + cursor.getString(3) +
-//                        ", Used Electric: " + cursor.getInt(4) + ", User Type: " + cursor.getString(5) +
-//                        ", Unit Price: " + cursor.getDouble(6));
-//            } while (cursor.moveToNext());
-//        }
-//        cursor.close();
-//        db.close();
-//        return joinedDataList;
-//    }
 }
