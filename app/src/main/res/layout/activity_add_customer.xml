@@ -8,6 +8,17 @@
     android:background="#FAF4E1"
     tools:context=".AddCustomer">
 
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/circle_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
@@ -34,7 +45,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="356dp"
-        android:layout_height="314dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_background"
         android:orientation="vertical"
@@ -77,7 +88,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -91,19 +102,12 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="82dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="5dp"
-                android:paddingRight="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/yyyymm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
 
 
         </LinearLayout>
@@ -166,7 +170,7 @@
                 android:paddingRight="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/consumption"
+                    android:id="@+id/priceUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>

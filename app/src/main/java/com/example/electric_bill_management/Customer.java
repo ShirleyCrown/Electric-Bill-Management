@@ -12,8 +12,7 @@ public class Customer {
     }
 
     // Constructor
-    public Customer(int id, String name, int yyyymm, String address, int usedNumElectric, int elecUserTypeId) {
-        this.id = id;
+    public Customer(String name, int yyyymm, String address, double usedNumElectric, int elecUserTypeId) {
         this.name = name;
         this.yyyymm = yyyymm;
         this.address = address;

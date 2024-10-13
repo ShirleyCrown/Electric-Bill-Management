@@ -8,6 +8,17 @@
     android:background="#FAF4E1"
     tools:context=".IncreaseElectricPrice">
 
+    <ImageButton
+        android:id="@+id/backButton2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/circle_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
     <LinearLayout
         android:layout_width="355dp"
         android:layout_height="298dp"
@@ -43,13 +54,39 @@
                 android:paddingRight="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/consumption"
+                    android:id="@+id/priceUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/userTypeTextView"
+                android:layout_width="27dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="20dp"
+                android:text="User type"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/userSpinner"
+                android:layout_width="74dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/button"

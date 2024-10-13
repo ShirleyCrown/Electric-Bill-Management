@@ -1,10 +1,14 @@
 package com.example.electric_bill_management;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
 
@@ -12,8 +16,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DatabaseHelper {
     private Context context;
@@ -158,11 +165,83 @@ public class DatabaseHelper {
         if (cursor != null) {
             cursor.close();
         }
+
+        db.close();
         return price;
     }
 
+    public void addCustomer(Customer customer) {
+        SQLiteDatabase db = openDatabase();
 
+        String query = "INSERT INTO CUSTOMER (NAME, YYYYMM, ADDRESS, USED_NUM_ELECTRIC, ELEC_USER_TYPE_ID) " +
+                "VALUES (?, ?, ?, ?, ?)";
 
+        db.execSQL(query, new Object[]{
+                customer.getName(),
+                customer.getYyyymm(),
+                customer.getAddress(),
+                customer.getUsedNumElectric(),
+                customer.getElecUserTypeId()
+        });
+
+        db.close();
+    }
+
+    public void increaseElectricUnitPrice(int userTypeId, int increaseAmount) {
+        SQLiteDatabase db = openDatabase();
+
+        // Update unit price in the database
+        String updateQuery = "UPDATE ELECTRIC_USER_TYPE SET UNIT_PRICE = UNIT_PRICE + ? WHERE ID = ?";
+        db.execSQL(updateQuery, new Object[]{increaseAmount, userTypeId});
+
+        // Get the updated user type name for the notification
+        String userTypeName = "";
+        int newUnitPrice = 0;
+        Cursor cursor = db.rawQuery("SELECT ELEC_USER_TYPE_NAME, UNIT_PRICE FROM ELECTRIC_USER_TYPE WHERE ID = ?", new String[]{String.valueOf(userTypeId)});
+        if (cursor.moveToFirst()) {
+            userTypeName = cursor.getString(0);
+            newUnitPrice = cursor.getInt(1);
+        }
+        cursor.close();
+        db.close();
+
+        // Create the notification
+        createNotification(userTypeName, increaseAmount);
+    }
+
+    private void createNotification(String userTypeName, int increaseAmount) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        String channelId = "electric_price_update_channel";
+        String channelName = "Electric Price Updates";
+
+        // Create the notification channel (for Android 8.0 and above)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        // Format the current date and time
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+        String currentTime = dateFormat.format(new Date());
+
+        // Build the notification content
+        String notificationContent = "Already increased electric unit price for user type " + userTypeName +
+                " with amount " + increaseAmount + " at " + currentTime;
+
+        Notification.Builder builder = new Notification.Builder(context)
+                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setContentTitle("Electric Unit Price Increased")
+                .setContentText(notificationContent)
+                .setAutoCancel(true);
+
+        // Set the notification channel for Android 8.0 and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            builder.setChannelId(channelId);
+        }
+
+        // Send the notification
+        notificationManager.notify(1, builder.build());
+    }
 
 //    public List<String> getJoinedCustomerData() {
 //        List<String> joinedDataList = new ArrayList<>();
