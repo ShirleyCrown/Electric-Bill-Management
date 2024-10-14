@@ -1,9 +1,12 @@
 package com.example.electric_bill_management;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,10 @@ import com.example.electric_bill_management.Customer_RecyclerView.CustomerList;
 public class MainMenu extends AppCompatActivity {
     private Button addCustomerButton, listButton, updatePriceButton, searchCustomerButton;
     private DatabaseHelper databaseHelper;
+
+    private MediaPlayer mediaPlayer;
+    private SharedPreferences sharedPreferences;
+    private ImageView imageSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,5 +74,51 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        imageSetting = findViewById(R.id.imageSetting);
+        imageSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
+        boolean playMusic = sharedPreferences.getBoolean("play_music", false);
+        if (playMusic) {
+            startMusic();
+        }
+    }
+
+    private void startMusic() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.sample);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean playMusic = sharedPreferences.getBoolean("play_music", false);
+        if (playMusic && mediaPlayer != null) {
+            mediaPlayer.start();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
     }
 }

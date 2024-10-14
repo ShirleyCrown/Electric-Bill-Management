@@ -38,6 +38,9 @@
             android:name=".MainMenu"
             android:exported="false" />
         <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="true">
             <intent-filter>
