@@ -44,7 +44,7 @@ public class AddCustomer extends AppCompatActivity {
         name = findViewById(R.id.name);
         //yyyymm  = findViewById(R.id.yyyymm);
         address = findViewById(R.id.address);
-        consumption = findViewById(R.id.priceUpdate);
+        consumption = findViewById(R.id.consumptionUpdate);
 
         datePicker = findViewById(R.id.datePicker);
         Calendar calendar = Calendar.getInstance();

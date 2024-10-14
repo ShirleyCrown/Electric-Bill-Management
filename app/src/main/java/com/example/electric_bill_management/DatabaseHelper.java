@@ -32,9 +32,6 @@ public class DatabaseHelper {
         this.context = context;
     }
 
-//    public DatabaseHelper(View.OnClickListener onClickListener) {
-//    }
-
     public void createDatabase() {
         try {
             File directory = new File(DATABASE_PATH);
@@ -237,6 +234,24 @@ public class DatabaseHelper {
         // Create the notification
         createNotification(userTypeName, increaseAmount);
     }
+
+    public void updateCustomerById(Customer customer) {
+        SQLiteDatabase db = openDatabase();
+
+        String updateQuery = "UPDATE CUSTOMER SET NAME = ?, YYYYMM = ?, ADDRESS = ?, USED_NUM_ELECTRIC = ?, ELEC_USER_TYPE_ID = ? WHERE ID = ?";
+
+        db.execSQL(updateQuery, new Object[]{
+                customer.getName(),
+                customer.getYyyymm(),
+                customer.getAddress(),
+                customer.getUsedNumElectric(),
+                customer.getElecUserTypeId(),
+                customer.getId()
+        });
+
+        db.close();
+    }
+
 
     private void createNotification(String userTypeName, int increaseAmount) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);

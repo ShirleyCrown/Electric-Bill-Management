@@ -54,7 +54,7 @@
                 android:paddingRight="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/priceUpdate"
+                    android:id="@+id/consumptionUpdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>

@@ -39,7 +39,7 @@ public class IncreaseElectricPrice extends AppCompatActivity {
             return insets;
         });
 
-        priceUpdate = findViewById(R.id.priceUpdate);
+        priceUpdate = findViewById(R.id.consumptionUpdate);
 
         submit = findViewById(R.id.button);
 

@@ -3,6 +3,7 @@ package com.example.electric_bill_management;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.electric_bill_management.Customer_RecyclerView.CustomerList;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class CustomerDetails extends AppCompatActivity {
@@ -23,6 +26,8 @@ public class CustomerDetails extends AppCompatActivity {
     int pos;
     ImageButton first, last, previous, next, back;
     DatabaseHelper db = new DatabaseHelper(this);
+    Button update;
+    Customer[] customers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +41,13 @@ public class CustomerDetails extends AppCompatActivity {
         });
 
 
-        Customer[] customers = db.getAllCustomers().toArray(new Customer[0]);
-        pos = getIntent().getIntExtra("pos",0);
+        customers = db.getAllCustomers().toArray(new Customer[0]);
+        if(getIntent().hasExtra("pos")){
+            pos = getIntent().getIntExtra("pos",0);
+        }else{
+            pos = getIntent().getIntExtra("update",0);
+        }
+
         displayData(customers,pos);
 
         back = findViewById(R.id.backToList);
@@ -92,6 +102,18 @@ public class CustomerDetails extends AppCompatActivity {
 
                 pos+=1;
                 displayData(customers,pos);
+            }
+        });
+
+        update = findViewById(R.id.update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustomerDetails.this, UpdateCustomer.class);
+
+                intent.putExtra("pos", pos);
+
+                startActivity(intent);
             }
         });
 
