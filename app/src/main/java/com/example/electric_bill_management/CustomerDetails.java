@@ -1,6 +1,7 @@
 package com.example.electric_bill_management;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,8 @@ public class CustomerDetails extends AppCompatActivity {
     DatabaseHelper db = new DatabaseHelper(this);
     Button update;
     Customer[] customers;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,15 +140,23 @@ public class CustomerDetails extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
         month.setText(sdf.format(calendar.getTime())+" "+customers[0].getYyyymm()/100);
 
-        address.setText(customers[pos].getAddress());
-
         String res = customers[pos].getUsedNumElectric()+"";
-        amount.setText(res);
-
         String type = customers[pos].getElecUserTypeId() == 1?"Private":"Business";
-        userType.setText(type);
-
         int unit_price = db.getPriceByType(customers[pos].getElecUserTypeId());
-        price.setText(String.valueOf(customers[pos].getUsedNumElectric()*unit_price));
+
+        sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
+        boolean showInfo = sharedPreferences.getBoolean("show_details", true);
+
+        if (!showInfo){
+            address.setVisibility(View.GONE);
+            amount.setVisibility(View.GONE);
+            userType.setVisibility(View.GONE);
+            price.setVisibility(View.GONE);
+        } else {
+            address.setText(customers[pos].getAddress());
+            amount.setText(res);
+            userType.setText(type);
+            price.setText(String.valueOf(customers[pos].getUsedNumElectric()*unit_price));
+        }
     }
 }
