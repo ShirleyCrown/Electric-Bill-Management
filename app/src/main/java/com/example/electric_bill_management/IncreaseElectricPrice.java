@@ -2,12 +2,15 @@ package com.example.electric_bill_management;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +30,8 @@ public class IncreaseElectricPrice extends AppCompatActivity {
     private String selectedItem;
     private Button submit;
     private ImageButton backButton;
+    private int type, electricPrice;
+    private TextView textPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,7 @@ public class IncreaseElectricPrice extends AppCompatActivity {
             }
         });
 
+        DatabaseHelper db = new DatabaseHelper(this);
 
         spinner = findViewById(R.id.userSpinner);
         userType.add("None");
@@ -64,6 +70,24 @@ public class IncreaseElectricPrice extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = adapterView.getItemAtPosition(i).toString();
+                if (selectedItem.equals("None")) {
+                    textPrice.setText("");
+                }
+                else {
+                    type = selectedItem.equals("Private") ? 1 : 2;
+                    electricPrice = db.getPriceByType(type);
+
+                    if (priceUpdate.length() == 0) {
+                        textPrice.setText(String.valueOf(electricPrice));
+                        return;
+                    }
+                    try {
+                        int inputValue = Integer.parseInt(priceUpdate.getText().toString());
+                        int price = inputValue + electricPrice;
+                        textPrice.setText(String.valueOf(price));
+                    } catch (NumberFormatException e) {
+                    }
+                }
             }
 
             @Override
@@ -72,7 +96,41 @@ public class IncreaseElectricPrice extends AppCompatActivity {
             }
         });
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        textPrice = findViewById(R.id.textPrice);
+
+        textPrice.setText("");
+
+        priceUpdate.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (!selectedItem.equals("None")) {
+                    type = selectedItem.equals("Private") ? 1 : 2;
+                    electricPrice = db.getPriceByType(type);
+
+                    if (charSequence.length() == 0) {
+                        textPrice.setText(String.valueOf(electricPrice));
+                        return;
+                    }
+                    try {
+                        int inputValue = Integer.parseInt(charSequence.toString());
+                        int price = inputValue + electricPrice;
+                        textPrice.setText(String.valueOf(price));
+                    } catch (NumberFormatException e) {
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,10 +142,11 @@ public class IncreaseElectricPrice extends AppCompatActivity {
                     Toast.makeText(IncreaseElectricPrice.this, "Please choose user type!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                int type = spinner.getSelectedItem().toString().equals("Private")?1:2;
+                type = spinner.getSelectedItem().toString().equals("Private") ? 1 : 2;
                 db.increaseElectricUnitPrice(type,Integer.parseInt(priceUpdate.getText().toString()));
-
+                Toast.makeText(IncreaseElectricPrice.this, "Update success!", Toast.LENGTH_SHORT).show();
+                int price = db.getPriceByType(type);
+                textPrice.setText(String.valueOf(price));
             }
         });
     }

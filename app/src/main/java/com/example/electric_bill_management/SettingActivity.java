@@ -28,6 +28,8 @@ public class SettingActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_setting);
 
+        final MyApplication app = (MyApplication) getApplication();
+
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         switchVisibility = findViewById(R.id.switch_visibility);
         switchMusic = findViewById(R.id.switch_music);
@@ -43,9 +45,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
         switchMusic.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(KEY_MUSIC, isChecked);
-            editor.apply();
+            app.toggleMusic(isChecked);
         });
 
         buttonBack.setOnClickListener(new View.OnClickListener() {

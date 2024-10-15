@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -147,11 +148,16 @@ public class CustomerDetails extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
         boolean showInfo = sharedPreferences.getBoolean("show_details", true);
 
-        if (!showInfo){
-            address.setVisibility(View.GONE);
-            amount.setVisibility(View.GONE);
-            userType.setVisibility(View.GONE);
-            price.setVisibility(View.GONE);
+        if (!showInfo) {
+            LinearLayout addressLayout = (LinearLayout) findViewById(R.id.addressLayout);
+            LinearLayout amountLayout = (LinearLayout) findViewById(R.id.amountLayout);
+            LinearLayout userTypeLayout = (LinearLayout) findViewById(R.id.userTypeLayout);
+            LinearLayout priceLayout = (LinearLayout) findViewById(R.id.priceLayout);
+
+            addressLayout.setVisibility(View.GONE);
+            amountLayout.setVisibility(View.GONE);
+            userTypeLayout.setVisibility(View.GONE);
+            priceLayout.setVisibility(View.GONE);
         } else {
             address.setText(customers[pos].getAddress());
             amount.setText(res);

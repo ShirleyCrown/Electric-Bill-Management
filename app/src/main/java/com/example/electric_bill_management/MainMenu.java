@@ -83,42 +83,5 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
-        boolean playMusic = sharedPreferences.getBoolean("play_music", false);
-        if (playMusic) {
-            startMusic();
-        }
-    }
-
-    private void startMusic() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.sample);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (mediaPlayer != null) {
-            mediaPlayer.pause();
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        boolean playMusic = sharedPreferences.getBoolean("play_music", false);
-        if (playMusic && mediaPlayer != null) {
-            mediaPlayer.start();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-        }
     }
 }
