@@ -147,6 +147,7 @@ public class IncreaseElectricPrice extends AppCompatActivity {
                 Toast.makeText(IncreaseElectricPrice.this, "Update success!", Toast.LENGTH_SHORT).show();
                 int price = db.getPriceByType(type);
                 textPrice.setText(String.valueOf(price));
+                priceUpdate.setText("");
             }
         });
     }
