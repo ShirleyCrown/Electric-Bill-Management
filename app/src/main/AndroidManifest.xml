@@ -33,7 +33,7 @@
             android:name=".AddCustomer"
             android:exported="false" />
         <activity
-            android:name=".SearchCustomer"
+            android:name=".Customer_RecyclerView.SearchCustomer"
             android:exported="false" />
         <activity
             android:name=".MainMenu"

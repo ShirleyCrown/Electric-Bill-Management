@@ -6,20 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF4E1"
+    android:orientation="horizontal"
     tools:context=".MainMenu">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="4dp"
         android:backgroundTint="#FFA592"
         app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.624"
         app:layout_constraintStart_toEndOf="@+id/cardView4"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        tools:layout_editor_absoluteY="200dp">
 
         <Button
             android:id="@+id/searchCustomerButton"
@@ -52,58 +50,14 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="195dp"
-        android:layout_height="195dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#8DCE9B"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.624"
-        app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/listCustomerButton"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="140dp"
-            android:backgroundTint="#3C7B4A"
-            android:text="View"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/listCustomerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="80dp"
-            android:text="Customer List"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="47dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="145dp"
-            android:alpha="0.5"
-            app:srcCompat="@drawable/ic_list" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="70dp"
         android:backgroundTint="#FFCF73"
         app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        tools:layout_editor_absoluteY="200dp">
 
         <Button
             android:id="@+id/updatePriceButton"
@@ -140,12 +94,11 @@
         android:id="@+id/cardView"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="70dp"
         android:backgroundTint="#93C4FF"
         app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        tools:layout_editor_absoluteY="5dp">
 
         <Button
             android:id="@+id/addCustomerButton"
@@ -177,25 +130,68 @@
             app:srcCompat="@drawable/ic_person" />
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="195dp"
+        android:layout_height="195dp"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="#8DCE9B"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        tools:layout_editor_absoluteY="5dp">
+
+        <Button
+            android:id="@+id/listCustomerButton"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="140dp"
+            android:backgroundTint="#3C7B4A"
+            android:text="View"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/listCustomerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="80dp"
+            android:text="Customer List"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="47dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="145dp"
+            android:alpha="0.5"
+            app:srcCompat="@drawable/ic_list" />
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="340dp"
+        android:layout_marginStart="78dp"
         android:fontFamily="@font/dm_serif_display"
         android:text="Menu"
         android:textColor="#FF9900"
-        android:textSize="50sp"
+        android:textSize="70sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="156dp" />
 
-    <Button
-        android:id="@+id/settingButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <ImageView
+        android:id="@+id/imageSetting"
+        android:layout_width="59dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:alpha="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_settings_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

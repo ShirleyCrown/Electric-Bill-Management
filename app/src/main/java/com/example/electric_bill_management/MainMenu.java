@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.electric_bill_management.Customer_RecyclerView.CustomerList;
+import com.example.electric_bill_management.Customer_RecyclerView.SearchCustomer;
 
 public class MainMenu extends AppCompatActivity {
     private Button addCustomerButton, listButton, updatePriceButton, searchCustomerButton;

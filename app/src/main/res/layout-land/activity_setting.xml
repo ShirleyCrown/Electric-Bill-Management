@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:background="#FAF4E1"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".SettingActivity">
 
     <ImageButton
@@ -15,7 +15,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="46dp"
         android:background="@drawable/circle_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,55 +25,60 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/dm_serif_display"
         android:text="Settings"
         android:textColor="#FF9900"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="116dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="303dp"
-        android:layout_height="55dp"
+        android:layout_width="535dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="28dp"
         android:text="Show Address/Used Num Electric/User Type/Price"
         android:textColor="#FF7A00"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="10dp" />
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Switch
         android:id="@+id/switch_visibility"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="209dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="151dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="333dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView1"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="303dp"
+        android:layout_width="535dp"
         android:layout_height="55dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="14dp"
         android:text="Play music"
         android:textColor="#FF7A00"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
-        tools:layout_editor_absoluteX="10dp" />
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <Switch
         android:id="@+id/switch_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="50dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        app:layout_constraintTop_toBottomOf="@+id/switch_visibility"
-        tools:layout_editor_absoluteX="333dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/switch_visibility" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

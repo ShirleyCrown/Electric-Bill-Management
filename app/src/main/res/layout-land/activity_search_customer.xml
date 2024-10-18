@@ -6,20 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF4E1"
-    tools:context=".SearchCustomer">
+    android:orientation="horizontal"
+    tools:context=".Customer_RecyclerView.SearchCustomer">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/dm_serif_display"
         android:text="Search Customer"
         android:textColor="#FF9900"
-        android:textSize="50sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,11 +29,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="6dp"
         android:text="Electric Bill Management"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -39,8 +41,8 @@
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -49,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="30dp"
         android:text="Choose criteria:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,37 +59,52 @@
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="232dp"
+        android:layout_width="100dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="10dp"
         android:text="Search"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout_search"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayout_search" />
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="250dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="232dp"
-        android:background="@drawable/rounded_background"
-        android:queryHint="Searching..."
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="220dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="3dp"
+        app:endIconMode="clear_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ExtraText">>
 
-    <LinearLayout
-        android:layout_width="342dp"
-        android:layout_height="248dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_background"
-        android:elevation="4dp"
-        android:orientation="vertical"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="360dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp" />
+
+    <ImageButton
+        android:id="@+id/backButton1000"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/circle_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF4E1"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".IncreaseElectricPrice">
 
     <ImageButton
@@ -23,12 +23,13 @@
     <LinearLayout
         android:layout_width="355dp"
         android:layout_height="298dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/rounded_background"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -130,16 +131,15 @@
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:fontFamily="@font/dm_serif_display"
         android:gravity="center"
         android:text="Increase Electric Price "
         android:textColor="#FF9900"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
@@ -147,8 +147,8 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/customer" />
