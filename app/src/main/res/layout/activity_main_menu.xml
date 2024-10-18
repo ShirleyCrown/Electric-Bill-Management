@@ -3,19 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF4E1"
+    android:orientation="vertical"
     tools:context=".MainMenu">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginTop="14dp"
         android:backgroundTint="#FFA592"
         app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardView4"
         app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
@@ -53,9 +55,11 @@
         android:id="@+id/cardView4"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
         android:backgroundTint="#FFCF73"
         app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardView3"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
@@ -94,12 +98,13 @@
         android:id="@+id/cardView"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#93C4FF"
         app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <Button
             android:id="@+id/addCustomerButton"
@@ -135,12 +140,13 @@
         android:id="@+id/cardView2"
         android:layout_width="195dp"
         android:layout_height="195dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="50dp"
         android:backgroundTint="#8DCE9B"
         app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
         <Button
             android:id="@+id/listCustomerButton"
@@ -176,14 +182,14 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/dm_serif_display"
         android:text="Menu"
         android:textColor="#FF9900"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -191,13 +197,11 @@
         android:id="@+id/imageSetting"
         android:layout_width="59dp"
         android:layout_height="55dp"
-        android:layout_marginStart="345dp"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_settings_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

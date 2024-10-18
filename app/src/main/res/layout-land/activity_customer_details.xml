@@ -24,20 +24,21 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
         android:fontFamily="@font/dm_serif_display"
         android:text="Customer Detail"
         android:textColor="#FF9900"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        tools:layout_editor_absoluteX="45dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/customer" />
@@ -46,11 +47,13 @@
         android:id="@+id/linearLayout3"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_background"
         android:elevation="4dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="380dp"
-        tools:layout_editor_absoluteY="20dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/idLayout"
@@ -229,62 +232,61 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/previousPage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/circle_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/firstPage"
-        app:srcCompat="@drawable/ic_back_2" />
-
-    <ImageButton
         android:id="@+id/nextPage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/circle_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/previousPage"
+        app:layout_constraintEnd_toStartOf="@+id/lastPage"
+        app:layout_constraintTop_toBottomOf="@+id/update"
         app:srcCompat="@drawable/ic_next" />
+
+    <ImageButton
+        android:id="@+id/previousPage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/circle_button"
+        app:layout_constraintEnd_toStartOf="@+id/nextPage"
+        app:layout_constraintTop_toBottomOf="@+id/update"
+        app:srcCompat="@drawable/ic_back_2" />
 
     <ImageButton
         android:id="@+id/firstPage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/circle_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/update"
+        app:layout_constraintEnd_toStartOf="@+id/previousPage"
+        app:layout_constraintTop_toBottomOf="@+id/update"
         app:srcCompat="@drawable/ic_first_page" />
 
     <ImageButton
         android:id="@+id/lastPage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="65dp"
         android:background="@drawable/circle_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nextPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update"
         app:srcCompat="@drawable/ic_last_page" />
 
     <Button
         android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="144dp"
         android:backgroundTint="#FCCD7E"
         android:text="Update"
         android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        tools:layout_editor_absoluteX="380dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

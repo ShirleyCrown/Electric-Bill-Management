@@ -6,22 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF4E1"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".Customer_RecyclerView.SearchCustomer">
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/dm_serif_display"
         android:text="Search Customer"
         android:textColor="#FF9900"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,11 +27,10 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="8dp"
         android:text="Electric Bill Management"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -41,7 +38,7 @@
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -50,7 +47,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="94dp"
         android:layout_marginTop="30dp"
         android:text="Choose criteria:"
         android:textSize="18sp"
@@ -62,22 +59,27 @@
         android:layout_width="100dp"
         android:layout_height="61dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="208dp"
         android:text="Search"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout_search"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout_search" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_search"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="220dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="208dp"
         app:boxStrokeWidth="2dp"
         app:boxStrokeWidthFocused="3dp"
         app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_search"
         tools:ignore="ExtraText">>
 
         <com.google.android.material.textfield.TextInputEditText
@@ -89,12 +91,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="360dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/backButton1000"
