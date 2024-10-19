@@ -23,7 +23,7 @@ public class MainMenu extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
     private SharedPreferences sharedPreferences;
-    private ImageView imageSetting;
+    private ImageView imageSetting, imageLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +82,17 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainMenu.this, SettingActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        imageLogout = findViewById(R.id.btnLogout);
+        imageLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainMenu.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
         });
     }
