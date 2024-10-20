@@ -101,7 +101,7 @@ public class AddCustomer extends AppCompatActivity {
 
                 int type = spinner.getSelectedItem().toString().equals("Private")?1:2;
                 Customer customer = new Customer(name1,Integer.parseInt(month), addr, Double.parseDouble(amount),type);
-                db.addCustomer(customer);
+                db.addCustomer(customer); // Add customer vao Database
                 Toast.makeText(AddCustomer.this, "Customer added!", Toast.LENGTH_SHORT).show();
             }
         });

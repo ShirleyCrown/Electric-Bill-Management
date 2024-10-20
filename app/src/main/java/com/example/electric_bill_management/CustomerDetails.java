@@ -52,8 +52,10 @@ public class CustomerDetails extends AppCompatActivity {
             pos = getIntent().getIntExtra("update",0);
         }
 
+        // Hien thi thong tin chi tiet customer
         displayData(customers,pos);
 
+        // Xu ly tro ve man hinh Menu
         back = findViewById(R.id.backToList);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class CustomerDetails extends AppCompatActivity {
             }
         });
 
+        // Hien thi thong tin customer dau tien
         first = findViewById(R.id.firstPage);
         first.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +75,7 @@ public class CustomerDetails extends AppCompatActivity {
             }
         });
 
+        // Hien thi thong tin customer cuoi cung
         last = findViewById(R.id.lastPage);
         last.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +85,7 @@ public class CustomerDetails extends AppCompatActivity {
             }
         });
 
+        // Hien thi thong tin Customer truoc do
         previous = findViewById(R.id.previousPage);
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +100,7 @@ public class CustomerDetails extends AppCompatActivity {
             }
         });
 
+        // Hien thi thong tin Customer tiep theo
         next = findViewById(R.id.nextPage);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +115,7 @@ public class CustomerDetails extends AppCompatActivity {
             }
         });
 
+        // Di chuyen den man hinh update customer
         update = findViewById(R.id.update);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,10 +152,12 @@ public class CustomerDetails extends AppCompatActivity {
         String type = customers[pos].getElecUserTypeId() == 1?"Private":"Business";
         int unit_price = db.getPriceByType(customers[pos].getElecUserTypeId());
 
+        // Get setting An hien Address/Used Num Electric/User Type/Price tu man hinh Setting
         sharedPreferences = getSharedPreferences("app_settings", MODE_PRIVATE);
         boolean showInfo = sharedPreferences.getBoolean("show_details", true);
 
-        if (!showInfo) {
+        // Control an hien thong tin Address/Used Num Electric/User Type/Price
+        if (!showInfo) { // Truong hop an
             LinearLayout addressLayout = (LinearLayout) findViewById(R.id.addressLayout);
             LinearLayout amountLayout = (LinearLayout) findViewById(R.id.amountLayout);
             LinearLayout userTypeLayout = (LinearLayout) findViewById(R.id.userTypeLayout);
@@ -158,7 +167,7 @@ public class CustomerDetails extends AppCompatActivity {
             amountLayout.setVisibility(View.GONE);
             userTypeLayout.setVisibility(View.GONE);
             priceLayout.setVisibility(View.GONE);
-        } else {
+        } else { // Truong hop hien thi
             address.setText(customers[pos].getAddress());
             amount.setText(res);
             userType.setText(type);

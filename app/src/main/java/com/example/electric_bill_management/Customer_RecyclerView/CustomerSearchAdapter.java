@@ -51,6 +51,7 @@ public class CustomerSearchAdapter extends RecyclerView.Adapter<CustomerSearchAd
         return customerFilter.size();
     }
 
+    // Xu ly search
     public void filter(String type, String query) {
         customerFilter.clear();
         if (query.isEmpty()) {
@@ -58,10 +59,12 @@ public class CustomerSearchAdapter extends RecyclerView.Adapter<CustomerSearchAd
         } else {
             for (CustomerSearchModel customer : customerModels) {
                 if (type.equals("Name")) {
+                    // Search theo ten
                     if (customer.getName().toLowerCase().contains(query.toLowerCase())) {
                         customerFilter.add(customer);
                     }
                 } else {
+                    // Search theo address
                     if (customer.getAddress().toLowerCase().contains(query.toLowerCase())) {
                         customerFilter.add(customer);
                     }
@@ -77,6 +80,7 @@ public class CustomerSearchAdapter extends RecyclerView.Adapter<CustomerSearchAd
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
 
+            // Set tri vao RecycleView
             customerId = itemView.findViewById(R.id.id);
             customerName = itemView.findViewById(R.id.name);
             customerMonth = itemView.findViewById(R.id.month);

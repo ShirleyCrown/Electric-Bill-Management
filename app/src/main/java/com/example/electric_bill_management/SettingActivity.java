@@ -38,16 +38,19 @@ public class SettingActivity extends AppCompatActivity {
         switchVisibility.setChecked(sharedPreferences.getBoolean(KEY_VISIBILITY, true));
         switchMusic.setChecked(sharedPreferences.getBoolean(KEY_MUSIC, false));
 
+        // SharedPreferences dung de control an/hien Address/Used Num Electric/User Type/Price tai man hinh CustomerDetails
         switchVisibility.setOnCheckedChangeListener((buttonView, isChecked) -> {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(KEY_VISIBILITY, isChecked);
             editor.apply();
         });
 
+        // Xu ly khi bat/tat phat nhac
         switchMusic.setOnCheckedChangeListener((buttonView, isChecked) -> {
             app.toggleMusic(isChecked);
         });
 
+        // Tro ve man hinh menu
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         signInButton = findViewById(R.id.signInButton);
 
+        // Xu ly login
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +54,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 if(name.equals("user") && pass.equals("user")){
-                    Intent intent = new Intent(Login.this, MainMenu.class);
+                    Intent intent = new Intent(Login.this, MainMenu.class); // Truong hop nhap dung user thi di chuyen den man hinh menu
                     startActivity(intent);
                 }else{
                     Toast.makeText(Login.this, "Wrong Login Info",Toast.LENGTH_SHORT).show();

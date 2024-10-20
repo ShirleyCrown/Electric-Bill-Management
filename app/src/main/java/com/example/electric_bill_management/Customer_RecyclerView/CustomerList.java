@@ -38,13 +38,15 @@ public class CustomerList extends AppCompatActivity implements RecyclerViewInter
         });
         recyclerView = findViewById(R.id.myRecyclerView);
 
+        // Add list customer tu database va set tri vao recyclerView
         setUpCustomerModels();
-
         Customer_RecyclerViewAdapter adapter = new Customer_RecyclerViewAdapter(this,customerModels, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         imageButton = findViewById(R.id.imageBackButton);
+
+        // Xu ly tro ve Man hinh Menu khi nhan button back
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +67,7 @@ public class CustomerList extends AppCompatActivity implements RecyclerViewInter
         }
     }
 
+    // Su kien click vao thong tin customer tu recyclerView de di chuyen den man hinh chi tiet customer
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(CustomerList.this, CustomerDetails.class);

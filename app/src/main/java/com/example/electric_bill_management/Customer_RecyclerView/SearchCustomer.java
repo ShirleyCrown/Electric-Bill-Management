@@ -55,8 +55,9 @@ public class SearchCustomer extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         recyclerView = findViewById(R.id.recyclerView);
-        setUpCustomerModels();
 
+        // Get tri tu database va set tri vao recyclerView
+        setUpCustomerModels();
         CustomerSearchAdapter adapter = new CustomerSearchAdapter(this,customerModels);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -77,6 +78,7 @@ public class SearchCustomer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String query = search.getText().toString();
+                // Truong hop chua chon criteria thi thong bao ra man hinh
                 if (spinner.getSelectedItem().toString().equals("None")){
                     Toast.makeText(SearchCustomer.this,"Please choose criteria", Toast.LENGTH_SHORT).show();
                     return;
@@ -85,11 +87,13 @@ public class SearchCustomer extends AppCompatActivity {
                     Toast.makeText(SearchCustomer.this,"Please insert name or address!",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // Tim kiem theo Name/Address tu spinner va tu khoa nhap trong textview
                 adapter.filter(spinner.getSelectedItem().toString(), query);
 
             }
         });
 
+        // Xu ly tro ve Man hinh Menu khi nhan button back
         backButton4 = findViewById(R.id.backButton1000);
         backButton4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +107,7 @@ public class SearchCustomer extends AppCompatActivity {
     private void setUpCustomerModels(){
         List<Customer> customers = databaseHelper.getAllCustomers();
 
+        // Loop list customer tu database va set tri vao list CustomerSearchModel
         for (int i = 0; i < customers.size(); i++) {
             int monthNum = customers.get(i).getYyyymm()%100;
             Calendar calendar = Calendar.getInstance();

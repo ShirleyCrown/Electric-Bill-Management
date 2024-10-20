@@ -46,6 +46,7 @@ public class UpdateCustomer extends AppCompatActivity {
             return insets;
         });
 
+        // Get thong tin customer tu database va hien thi len man hinh
         customers = db.getAllCustomers().toArray(new Customer[0]);
         pos = getIntent().getIntExtra("pos",0);
         customerObj = customers[pos];
@@ -95,6 +96,7 @@ public class UpdateCustomer extends AppCompatActivity {
         });
         spinner.setSelection(adapter.getPosition(customerObj.getElecUserTypeId()==1?"Private":"Business"));
 
+        // Di chuyen ve man hinh CustomerDetails
         backToDetails = findViewById(R.id.backToDetails);
         backToDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,13 +109,14 @@ public class UpdateCustomer extends AppCompatActivity {
         });
 
         update = findViewById(R.id.updateButton);
+        // Xu ly update thong tin Customer vao database dua tren tri input tai man hinh
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name1 = name.getText().toString();
                 String addr = address.getText().toString();
                 String amount = consumption.getText().toString();
-                if (name1.isEmpty() || addr.isEmpty() || amount.isEmpty()){
+                if (name1.isEmpty() || addr.isEmpty() || amount.isEmpty()){ // truong hop chua nhap ten, dia chi, tien thi khong cho update
                     Toast.makeText(UpdateCustomer.this, "Data missing", Toast.LENGTH_SHORT).show();
                     return;
                 }

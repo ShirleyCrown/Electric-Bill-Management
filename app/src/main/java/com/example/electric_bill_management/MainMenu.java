@@ -44,6 +44,7 @@ public class MainMenu extends AppCompatActivity {
         updatePriceButton = findViewById(R.id.updatePriceButton);
         searchCustomerButton = findViewById(R.id.searchCustomerButton);
 
+        // Di chuyen den man hinh Add Customer
         addCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +52,8 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Di chuyen den man hinh search customer
         searchCustomerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +62,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-
+        // Di chuyen den man hinh update price
         updatePriceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +71,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
+        // Di chuyen den man hinh list customer
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +81,7 @@ public class MainMenu extends AppCompatActivity {
         });
 
         imageSetting = findViewById(R.id.imageSetting);
+        // Di chuyen den man hinh Setting
         imageSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +91,7 @@ public class MainMenu extends AppCompatActivity {
         });
 
         imageLogout = findViewById(R.id.btnLogout);
+        // Dang xuat va di chuyen ve man hinh Login
         imageLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,6 @@
 package com.example.electric_bill_management.Customer_RecyclerView;
 
+// CustomerModel su dung cho CustomerList
 public class CustomerModel {
     String customerName, customerAddress;
     int image;

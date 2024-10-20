@@ -48,6 +48,7 @@ public class IncreaseElectricPrice extends AppCompatActivity {
 
         submit = findViewById(R.id.button);
 
+        // Tro ve man hinh menu
         backButton = findViewById(R.id.backButton2);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +71,9 @@ public class IncreaseElectricPrice extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = adapterView.getItemAtPosition(i).toString();
+                // Xu ly hien thi tong tien sau khi tang
                 if (selectedItem.equals("None")) {
-                    textPrice.setText("");
+                    textPrice.setText(""); // Chua chon Type thi khong hien thi
                 }
                 else {
                     type = selectedItem.equals("Private") ? 1 : 2;
@@ -112,11 +114,12 @@ public class IncreaseElectricPrice extends AppCompatActivity {
                     type = selectedItem.equals("Private") ? 1 : 2;
                     electricPrice = db.getPriceByType(type);
 
-                    if (charSequence.length() == 0) {
+                    // Xu ly khi thay doi tri cua textview
+                    if (charSequence.length() == 0) { // Textview khong input thi hien thi tu database
                         textPrice.setText(String.valueOf(electricPrice));
                         return;
                     }
-                    try {
+                    try { // Textview c input thi cong tri roi hien thi
                         int inputValue = Integer.parseInt(charSequence.toString());
                         int price = inputValue + electricPrice;
                         textPrice.setText(String.valueOf(price));
@@ -131,6 +134,7 @@ public class IncreaseElectricPrice extends AppCompatActivity {
             }
         });
 
+        // Update increasing price vao DB
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

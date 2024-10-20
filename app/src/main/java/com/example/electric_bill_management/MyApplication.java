@@ -71,6 +71,7 @@ public class MyApplication extends Application {
         });
     }
 
+    // Phat nhac
     public void startMusic() {
         if (mediaPlayer == null) {
             mediaPlayer = MediaPlayer.create(this, R.raw.sample);
@@ -81,12 +82,14 @@ public class MyApplication extends Application {
         }
     }
 
+    // Dung phat nhac
     public void stopMusic() {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
         }
     }
 
+    // Bat/tat phat nhac khi thay doi tai man hinh Setting
     public void toggleMusic(boolean isMusicOn) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(KEY_MUSIC, isMusicOn);
