@@ -13,11 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -27,7 +23,7 @@ public class IncreaseElectricPrice extends AppCompatActivity {
     private TextInputEditText priceUpdate;
     private Spinner spinner;
     private ArrayList<String> userType = new ArrayList<>();
-    private String selectedItem;
+    private String selectedItem = "None"; // Initialize with default value
     private Button submit;
     private ImageButton backButton;
     private int type, electricPrice;
@@ -36,76 +32,55 @@ public class IncreaseElectricPrice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_increase_electric_price);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         priceUpdate = findViewById(R.id.consumptionUpdate);
+        textPrice = findViewById(R.id.textPrice);
+        textPrice.setText(""); // Ensure textPrice is cleared on start
 
+        spinner = findViewById(R.id.userSpinner);
         submit = findViewById(R.id.button);
-
-        // Tro ve man hinh menu
         backButton = findViewById(R.id.backButton2);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(IncreaseElectricPrice.this, MainMenu.class);
-                startActivity(intent);
-            }
-        });
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        spinner = findViewById(R.id.userSpinner);
+        // Set up the Spinner with user types
         userType.add("None");
         userType.add("Private");
         userType.add("Business");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, userType);
-        adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = adapterView.getItemAtPosition(i).toString();
-                // Xu ly hien thi tong tien sau khi tang
-                if (selectedItem.equals("None")) {
-                    textPrice.setText(""); // Chua chon Type thi khong hien thi
-                }
-                else {
+
+                if (!selectedItem.equals("None")) {
                     type = selectedItem.equals("Private") ? 1 : 2;
                     electricPrice = db.getPriceByType(type);
 
                     if (priceUpdate.length() == 0) {
                         textPrice.setText(String.valueOf(electricPrice));
-                        return;
+                    } else {
+                        updatePriceDisplay(electricPrice);
                     }
-                    try {
-                        int inputValue = Integer.parseInt(priceUpdate.getText().toString());
-                        int price = inputValue + electricPrice;
-                        textPrice.setText(String.valueOf(price));
-                    } catch (NumberFormatException e) {
-                    }
+                } else {
+                    textPrice.setText(""); // Clear text when "None" is selected
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                // No action needed here
             }
         });
-
-        textPrice = findViewById(R.id.textPrice);
-
-        textPrice.setText("");
 
         priceUpdate.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                // No action needed before text changes
             }
 
             @Override
@@ -113,46 +88,49 @@ public class IncreaseElectricPrice extends AppCompatActivity {
                 if (!selectedItem.equals("None")) {
                     type = selectedItem.equals("Private") ? 1 : 2;
                     electricPrice = db.getPriceByType(type);
-
-                    // Xu ly khi thay doi tri cua textview
-                    if (charSequence.length() == 0) { // Textview khong input thi hien thi tu database
-                        textPrice.setText(String.valueOf(electricPrice));
-                        return;
-                    }
-                    try { // Textview c input thi cong tri roi hien thi
-                        int inputValue = Integer.parseInt(charSequence.toString());
-                        int price = inputValue + electricPrice;
-                        textPrice.setText(String.valueOf(price));
-                    } catch (NumberFormatException e) {
-                    }
+                    updatePriceDisplay(electricPrice);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                // No action needed after text changes
             }
         });
 
-        // Update increasing price vao DB
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (priceUpdate.getText().toString().isEmpty()) {
-                    Toast.makeText(IncreaseElectricPrice.this, "Please insert increasing price!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (spinner.getSelectedItem().toString().equals("None")) {
-                    Toast.makeText(IncreaseElectricPrice.this, "Please choose user type!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                type = spinner.getSelectedItem().toString().equals("Private") ? 1 : 2;
-                db.increaseElectricUnitPrice(type,Integer.parseInt(priceUpdate.getText().toString()));
-                Toast.makeText(IncreaseElectricPrice.this, "Update success!", Toast.LENGTH_SHORT).show();
-                int price = db.getPriceByType(type);
-                textPrice.setText(String.valueOf(price));
-                priceUpdate.setText("");
-            }
+        // Back button to navigate to the main menu
+        backButton.setOnClickListener(view -> {
+            Intent intent = new Intent(IncreaseElectricPrice.this, MainMenu.class);
+            startActivity(intent);
         });
+
+        // Submit button action
+        submit.setOnClickListener(view -> {
+            if (priceUpdate.getText().toString().isEmpty()) {
+                Toast.makeText(IncreaseElectricPrice.this, "Please insert increasing price!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (selectedItem.equals("None")) {
+                Toast.makeText(IncreaseElectricPrice.this, "Please choose user type!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            type = selectedItem.equals("Private") ? 1 : 2;
+            int increaseAmount = Integer.parseInt(priceUpdate.getText().toString());
+            db.increaseElectricUnitPrice(type, increaseAmount);
+            Toast.makeText(IncreaseElectricPrice.this, "Update success!", Toast.LENGTH_SHORT).show();
+            textPrice.setText(String.valueOf(db.getPriceByType(type)));
+            priceUpdate.setText("");
+        });
+    }
+
+    // Helper method to update the displayed price
+    private void updatePriceDisplay(int basePrice) {
+        try {
+            int inputValue = Integer.parseInt(priceUpdate.getText().toString());
+            int newPrice = inputValue + basePrice;
+            textPrice.setText(String.valueOf(newPrice));
+        } catch (NumberFormatException e) {
+            textPrice.setText(String.valueOf(basePrice));
+        }
     }
 }
